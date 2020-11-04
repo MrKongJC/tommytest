@@ -3,6 +3,9 @@
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim
 WORKDIR /app
 EXPOSE 80
+
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
+WORKDIR /src
 COPY ["Tommy.Demo/Tommy.Demo.csproj", "Tommy.Demo/"]
 RUN dotnet restore "Tommy.Demo/Tommy.Demo.csproj"
 COPY . .
